@@ -1,5 +1,6 @@
 import 'package:demo_aqueduct/data/data_provider.dart';
 import 'demo_aqueduct.dart';
+import 'package:demo_aqueduct/controllers/comm_controller.dart';
 
 /// This type initializes an application.
 ///
@@ -35,11 +36,13 @@ class DemoAqueductChannel extends ApplicationChannel {
         return Response.ok({"key": "value"});
       });
 
-    router.route("/data/[:which]")
-      .link(() => DataProvider());
+    router.route("/data/[:which]").link(() => DataProvider());
 
-    router.route("/owner")
-      .link(() => );
+    //router.route("/temp/page01/*").link(() => FileController("lib/page_01/"));
+    //router.route("/temp/page02/*").link(() => FileController("lib/page_02/"));
+    
+    router.route("/community/*")
+      .link(() => CommController("lib/page_02/"));
 
     return router;
   }

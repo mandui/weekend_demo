@@ -61,8 +61,17 @@ class DataProvider extends ResourceController {
       case "add_property":
         _addProperty();
         break;
+
+      case "del_owner":
+        _delOwner();
+        break;
       default:
     } 
+  }
+
+  // the url should be /data/update?api=del_owner&wechatId=xxxxx
+  void _delOwner() {
+    globals.delOwner(wechatId);
   }
 
   // the url should be /data/update?api=reg_owner&wechatId=xxxxx

@@ -3,6 +3,24 @@ import 'package:demo_aqueduct/data/definition/owner.dart';
 
 List<Owner> registedOwners =List();
 
+Owner getOwner(String wechatId) {
+  for (Owner owner in registedOwners) {
+    if (owner.wechatID ==wechatId)
+      return owner;
+  }
+
+  return null;
+}
+
+void delOwner(String wechatId) {
+  for (Owner owner in registedOwners) {
+    if (owner.wechatID ==wechatId) {
+      registedOwners.remove(owner);
+      break;
+    }
+  }
+}
+
 bool userExist(String wechatId) {
   return registedOwners.contains(wechatId);
 }

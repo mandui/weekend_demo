@@ -1,11 +1,10 @@
 import 'dart:io';
-import 'dart:html';
 import 'package:aqueduct/aqueduct.dart';
 
 import 'package:demo_aqueduct/data/definition/owner.dart';
 import 'package:demo_aqueduct/data/global.dart' as globals;
 
-class CommController extends FileController {
+class CommController extends FileController implements Recyclable{
 
   CommController(String pathOfDirectoryToServe) : super(pathOfDirectoryToServe);
 
@@ -23,6 +22,15 @@ class CommController extends FileController {
       return request;
 
     return Response.ok("community ctrl: exist, and has properties");
+  }
+
+  @override
+  // TODO: implement recycledState
+  get recycledState => null;
+
+  @override
+  void restore(state) {
+    // TODO: implement restore
   }
   
 }

@@ -11,15 +11,15 @@ class WechatAuthorizer extends ResourceController {
   static const String token = "ExprMandui";
 
   @Operation.get()
-  Future<Response> checkFromWechat(
+  Future<Response> checkFromWechat (
     @Bind.query('signature') String signature,
     @Bind.query('nonce') String nonce,
     @Bind.query('timestamp') String timestamp,
     @Bind.query('echostr') String echostr) async {
 
-    if (fromWechat(timestamp, nonce, signature))
+    if (fromWechat(timestamp, nonce, signature)) {
       return Response.ok(echostr)..contentType = ContentType.text;
-
+    }
     // I wonder weather is always called
 
     return Response.unauthorized();
@@ -36,11 +36,15 @@ class WechatAuthorizer extends ResourceController {
     Map<String, dynamic> retMap;
     switch (apiType) {
       case "access_token":
+        //retMap = {"access_token": await globals.getAccessToken()}; break;
         retMap =await getAccessToken(); break;
       case "wechat_server_ip":
         retMap =await getWechatServerIP(); break;
       case "network_detect":
         retMap =await detectNetworkStatus(); break;
+        break;
+      case "create_menu":
+        await _createMenu(); break;
       default:
         return Response.ok("$apiType api test is not currently supported.");
     }
@@ -77,8 +81,9 @@ class WechatAuthorizer extends ResourceController {
   getAccessToken() async {
     final uri = Uri.https("api.weixin.qq.com", "/cgi-bin/token", {
       "grant_type" :"client_credential",
-      "appid" :globals.appID, "secret" :globals.appSecret
+      "appid" :"wx95129b9615825957", "secret" : "3268923f3b1d643634b5ba2d5a47c7e3"
     });
+
     return getRespFromUri(uri);
   }
 
@@ -124,5 +129,57 @@ class WechatAuthorizer extends ResourceController {
 
     return digest ==signature;
   }
+
+  Future _createMenu() async {
+    final uri = Uri.https("api.weixin.qq.com", "/cgi-bin/menu/create", {
+        "access_token":globals.access_token
+      });
+    final params =_getMenu();
+    final ret = await postRespWithData(uri, params);
+    print("menu created: ${json.encode(ret)}");
+}
+
+//const String auth = "ec2-3-18-145-128.us-east-2.compute.amazonaws.com";
+final auth = "6ea12bbb.ngrok.io";
+Map<String, dynamic> _getMenu() {
+  final commListUri = Uri.https(auth, "/community/list/").toString();
+  final bindId = Uri.https(auth, "/owner/to_bind/").toString();
+  final listPropertyId =Uri.https(auth, "/owner/list_properties").toString();
+  final mngProperty =Uri.https(auth, "/owner/mng_properties").toString();
+
+  Map<String, dynamic> menu = {
+    "button":[
+      { "name":"公告", "type":"click",
+        "key":"V1001_TODAY_MUSIC"
+      },
+      { "name":"我的小区", "type":"view",
+        "url":_getMenuUri(commListUri)
+      },
+      {
+        "我的资金": [
+          { "name":"身份信息", "type":"view", 
+            "url":_getMenuUri(bindId) },
+          { "name":"维修资金查询", "type":"view", 
+            "url":_getMenuUri(listPropertyId) },
+          { "name":"管理我的房产", "type":"view", 
+            "url":_getMenuUri(mngProperty) }
+        ]
+      }
+    ]
+  };
+
+  return menu;
+}
+
+String _getMenuUri(String redirectUri){
+  const wechatAuth = "open.weixin.qq.com";
+  const wechatPath = "/connect/oauth2/authorize";
+
+  final menuUrl = Uri.https(wechatAuth, wechatPath, {
+    "appid":globals.appID, "redirect_uri":redirectUri, "response_type": "code",
+  }).toString();
+
+  return menuUrl;
+}
 
 }

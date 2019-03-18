@@ -3,6 +3,8 @@ import 'demo_aqueduct.dart';
 import 'package:demo_aqueduct/controllers/comm_controller.dart';
 import 'package:demo_aqueduct/controllers/wechat_controller.dart';
 
+import 'package:demo_aqueduct/data/global.dart' as globals;
+
 /// This type initializes an application.
 ///
 /// Override methods in this class to set up routes and initialize services like
@@ -39,19 +41,20 @@ class DemoAqueductChannel extends ApplicationChannel {
 
     router.route("/data/[:which]").link(() => DataProvider());
 
-    router.route("/wechat").link(() => WechatAuthorizer());
+    router.route("/wechat/[:api]").link(() => WechatAuthorizer());
 
     //router.route("/temp/page01/*").link(() => FileController("lib/page_01/"));
     //router.route("/temp/page02/*").link(() => FileController("lib/page_02/"));
     
-    router.route("/community/*")
+    router.route("/community/list/*")
       .link(() => CommController("lib/pages/to_bind/"))
       .link(() => FileController("lib/pages/to_bind/"));
 
     //router.route("/owner/to_bind/*");
     //router.route("/owner/list_properties/*");
 
-
+    router.route("/get_menu")
+      .linkFunction((request) => Response.ok(globals.getMenu())..contentType =ContentType.json);
     return router;
   }
 }

@@ -1,11 +1,9 @@
-import 'dart:io';
-import 'dart:html';
 import 'package:aqueduct/aqueduct.dart';
 
 import 'package:demo_aqueduct/data/definition/owner.dart';
 import 'package:demo_aqueduct/data/global.dart' as globals;
 
-class ManagePropertyController extends FileController {
+class ManagePropertyController extends FileController implements Recyclable {
 
   ManagePropertyController(String pathOfDirectoryToServe) : super(pathOfDirectoryToServe);
 
@@ -23,6 +21,15 @@ class ManagePropertyController extends FileController {
       return request;
 
     return Response.ok("property ctrl: owner exist, and has properties");
+  }
+
+  @override
+  // TODO: implement recycledState
+  get recycledState => null;
+
+  @override
+  void restore(state) {
+    // TODO: implement restore
   }
   
 }

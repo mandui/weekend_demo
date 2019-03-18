@@ -1,10 +1,20 @@
 library demo_aqueduct.globals;
-import 'dart:convert';
 import 'dart:async';
 import 'dart:io';
+import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:aqueduct/aqueduct.dart';
 
 import 'package:demo_aqueduct/data/definition/owner.dart';
+
+void prepare() {
+  getAccessToken();
+  final timeout = Duration(seconds:5400);
+  Timer.periodic(timeout, (Timer t) => getAccessToken());
+}
+
+
+
 
 List<Owner> registedOwners =List();
 const String appSecret = "3268923f3b1d643634b5ba2d5a47c7e3";
@@ -15,7 +25,7 @@ num lastTime = 0;
 bool menuCreated = false;
 
 
-Future getAccessToken() async {
+Future<String> getAccessToken() async {
   final currentTime =DateTime.now().second;
   if (access_token == "" || (currentTime - lastTime) > 5400) {
     final uri = Uri.https("api.weixin.qq.com", "/cgi-bin/token", {
@@ -27,27 +37,32 @@ Future getAccessToken() async {
     lastTime = DateTime.now().second;
   }
 
-  if (!menuCreated) {
-
+  /*if (!menuCreated) {
+    await _createMenu();
     menuCreated =true;
-  }
+  }*/
+
+  return access_token;
 }
 
-_createMenu() {
+Future _createMenu() async {
   final uri = Uri.https("api.weixin.qq.com", "/cgi-bin/menu/create", {
       "access_token":access_token
     });
-  
+  final params =getMenu();
+  final ret = await _postRespWithData(uri, params);
+  print("menu created: ${json.encode(ret)}");
   
   menuCreated =true;
 }
 
-const String auth = "ec2-3-18-145-128.us-east-2.compute.amazonaws.com";
-Map<String, dynamic> _getMenu() {
-  final commListUri = Uri.http(auth, "/community/list/").toString();
-  final bindId = Uri.http(auth, "/owner/to_bind/").toString();
-  final listPropertyId =Uri.http(auth, "/owner/list_properties").toString();
-  final mngProperty =Uri.http(auth, "/owner/mng_properties").toString();
+//const String auth = "ec2-3-18-145-128.us-east-2.compute.amazonaws.com";
+const String auth = "3cc658f0.ngrok.io";
+Map<String, dynamic> getMenu() {
+  final commListUri = Uri.https(auth, "/community/list/").toString();
+  final bindId = Uri.https(auth, "/owner/to_bind/").toString();
+  final listPropertyId =Uri.https(auth, "/owner/list_properties").toString();
+  final mngProperty =Uri.https(auth, "/owner/mng_properties").toString();
 
   Map<String, dynamic> menu = {
     "button":[
@@ -58,7 +73,8 @@ Map<String, dynamic> _getMenu() {
         "url":_getMenuUri(commListUri)
       },
       {
-        "我的资金": [
+        "name": "我的资金",
+        "sub_button" : [
           { "name":"身份信息", "type":"view", 
             "url":_getMenuUri(bindId) },
           { "name":"维修资金查询", "type":"view", 
@@ -79,9 +95,14 @@ String _getMenuUri(String redirectUri){
 
   final menuUrl = Uri.https(wechatAuth, wechatPath, {
     "appid":appID, "redirect_uri":redirectUri, "response_type": "code",
-  }).toString();
+    "scope":"snsapi_base"
+  }).toString() + "#wechat_redirect";
 
   return menuUrl;
+}
+
+void regAccessToken(String token) {
+  access_token = token;
 }
 
 Future<Map<String, dynamic>> 
@@ -100,7 +121,7 @@ Future<Map<String, dynamic>>
   }
 
 Future<Map<String, dynamic>> 
-  postRespWithData(Uri uri, Map<String, dynamic> params) async {
+  _postRespWithData(Uri uri, Map<String, dynamic> params) async {
     final jsonStr = json.encode(params);
     final resp = await http.post(uri.toString(), body: jsonStr);
     

@@ -1,4 +1,5 @@
 import 'package:demo_aqueduct/demo_aqueduct.dart';
+import 'package:demo_aqueduct/data/global.dart' as globals;
 
 Future main() async {
   final app = Application<DemoAqueductChannel>()
@@ -10,4 +11,7 @@ Future main() async {
 
   print("Application started on port: ${app.options.port}.");
   print("Use Ctrl-C (SIGINT) to stop running the application.");
+
+  //globals.prepare();
+
 }

@@ -11,4 +11,12 @@
   <body>
     <my-app>Loading...</my-app>
   </body>
+  <script>
+      document.body.addEventListener('touchstart', function(){ });
+      $('a').on('click touchend', function(e) {
+          var el = $(this);
+          var link = el.attr('href');
+          window.location = link;
+       });
+  </script>
 </html>

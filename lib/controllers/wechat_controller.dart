@@ -9,6 +9,7 @@ import 'package:demo_aqueduct/data/global.dart' as globals;
 class WechatAuthorizer extends ResourceController {
   
   static const String token = "ExprMandui";
+  @Bind.query('id_type') String idType;
 
   @Operation.get()
   Future<RequestOrResponse> checkFromWechat (
@@ -80,10 +81,19 @@ class WechatAuthorizer extends ResourceController {
 
   Future<Map<String, dynamic>> 
   getAccessToken() async {
-    final uri = Uri.https("api.weixin.qq.com", "/cgi-bin/token", {
+    Uri uri;
+    if (idType != null && idType == "expr") {
+      uri = Uri.https("api.weixin.qq.com", "/cgi-bin/token", {
+      "grant_type" :"client_credential",
+      "appid" :globals.exprAppId, "secret" : globals.exprAppSecret
+    });
+
+    } else {
+      uri = Uri.https("api.weixin.qq.com", "/cgi-bin/token", {
       "grant_type" :"client_credential",
       "appid" :globals.appID, "secret" : globals.appSecret
-    });
+      });
+    }
 
     return getRespFromUri(uri);
   }

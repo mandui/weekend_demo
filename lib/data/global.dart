@@ -21,6 +21,8 @@ List<Owner> registedOwners =List();
 //real one
 const String appSecret = "Be91c1df6197e26f129bcf7608aabdb1";
 const String appID ="wx10823f9799c7f8dc";
+const String exprAppId = "wx95129b9615825957";
+const String exprAppSecret = "3268923f3b1d643634b5ba2d5a47c7e3";
 String access_token = "";
 String page_access_token = "";
 num lastTime = 0;

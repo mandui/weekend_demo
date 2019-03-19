@@ -73,10 +73,10 @@ class DemoAqueductChannel extends ApplicationChannel {
     // 4.管理我的房产
     router.route("/property/add/*")
       // 有openid，search页面，选择特定房产之后提示关联
-      .link(() => FileController("lib/pages/add_property/"))
+      .link(() => FileController("lib/pages/add_property/"));
       //.link(() => AddPropertyController("lib/pages/add_property/"))
       // 无openid
-      .link(() => FileController("lib/pages/to_bind/"));
+      //.link(() => FileController("lib/pages/to_bind/"));
 
     // 无明显入口
     // hidden1 选择小区之后 会带参数

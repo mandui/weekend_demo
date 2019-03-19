@@ -82,7 +82,7 @@ class WechatAuthorizer extends ResourceController {
   getAccessToken() async {
     final uri = Uri.https("api.weixin.qq.com", "/cgi-bin/token", {
       "grant_type" :"client_credential",
-      "appid" :"wx95129b9615825957", "secret" : "3268923f3b1d643634b5ba2d5a47c7e3"
+      "appid" :globals.appID, "secret" : globals.appSecret
     });
 
     return getRespFromUri(uri);

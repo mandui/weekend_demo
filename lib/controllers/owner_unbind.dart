@@ -27,7 +27,7 @@ class OwnerUnbindController extends FileController implements Recyclable{
     final openid =jsonMap["openid"] as String;
 
     if (!globals.userExist(openid))    
-      return Response.ok("openid exist");
+      return super.handle(request);
     else 
       return request;
   }

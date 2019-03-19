@@ -57,7 +57,7 @@ class DemoAqueductChannel extends ApplicationChannel {
       // openid存在，提示解绑
       .link(() => OwnerUnbindController("lib/pages/owner_unbind/"))
       // openid不存在，提示绑定
-      .link(() => FileController("lib/pages/owner_bind/"));
+      .link(() => FileController("lib/pages/bind_id/"));
 
     // 3.维修资金查询
     router.route("/property/list/*")

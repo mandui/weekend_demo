@@ -30,7 +30,7 @@ class NoPropertyController extends FileController implements Recyclable{
     if (globals.userExist(openid)) {
       if(globals.getOwner(openid).proertyIds.isEmpty)
         return request;
-      return Response.ok("openid exist");
+      return super.handle(request);
     }   
     else 
       return request;

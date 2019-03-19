@@ -29,7 +29,7 @@ class PropertyController extends FileController implements Recyclable{
 
     globals.getOwner(openid).proertyIds.add("something");
 
-    return Response.ok("fake proper");
+    return super.handle(request);
   }
 
   

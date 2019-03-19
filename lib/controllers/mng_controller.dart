@@ -20,7 +20,7 @@ class ManagePropertyController extends FileController implements Recyclable {
     if (owner.communityIds.isEmpty)
       return request;
 
-    return Response.ok("property ctrl: owner exist, and has properties");
+    return super.handle(request);
   }
 
   @override

@@ -30,7 +30,7 @@ class AddPropertyController extends FileController implements Recyclable{
     final openid =jsonMap["openid"] as String;
 
     if (globals.userExist(openid))    
-      return Response.ok("community ctrl: exist, and has properties");
+      return super.handle(request);
     else 
       return request;
   }

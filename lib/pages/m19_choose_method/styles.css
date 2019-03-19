@@ -4,7 +4,6 @@
     margin-right: 3vw;
     margin-top: 5vw;
     border-radius: 1vw;
-    display: flex;
 }
 
 .left-line {
@@ -12,6 +11,14 @@
     border-radius: 1vw 0 0 1vw;
     width: 3vw;
     background-color: #03A9F4;
+}
+
+.left-icon {
+    display: inline-block;
+    width: 8vw;
+    height: 8vw;
+    margin-left: 5vw;
+    vertical-align: middle;
 }
 
 .description {
@@ -26,11 +33,29 @@
 
 .contents{
     display: inline-block;
-    width: 100%;
+    vertical-align: middle;
+
+    flex: 1;
 }
 
 .title {
     font-size: 6vw;
     margin: 5vw;
     color: #1E88E5;
+}
+
+.footer {
+    position:absolute;
+   bottom:0;
+   width:100%;
+   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+63,ffffff+100 */
+
+}
+
+.mask {
+    position:absolute;
+   bottom:0;
+   height: 35%;
+   width:100%;
+  background-image: linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,1));
 }

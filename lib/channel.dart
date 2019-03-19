@@ -61,6 +61,7 @@ class DemoAqueductChannel extends ApplicationChannel {
 
     // 3.维修资金查询
     router.route("/property/list/*")
+    .link(() => FileController("lib/pages/property_list/"))
       // 有openid, 有房产
       .link(() => PropertyController("lib/pages/property_list/"))
       // 有openid, 无房产

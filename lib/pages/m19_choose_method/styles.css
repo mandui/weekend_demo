@@ -1,3 +1,7 @@
+body {
+    background: #ffffff;
+}
+
 .comm-item {
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
     margin-left: 3vw;
@@ -15,8 +19,8 @@
 
 .left-icon {
     display: inline-block;
-    width: 8vw;
-    height: 8vw;
+    width: 10vw;
+    height: 10vw;
     margin-left: 5vw;
     vertical-align: middle;
 }
@@ -55,7 +59,7 @@
 .mask {
     position:absolute;
    bottom:0;
-   height: 50%;
+   height: 40%;
    width:100%;
-  background-image: linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,1));
+  background-image: linear-gradient(to top, rgba(255,255,255,0), rgba(255, 255, 255,1));
 }

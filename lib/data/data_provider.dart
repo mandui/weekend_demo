@@ -12,6 +12,8 @@ class DataProvider extends ResourceController {
   @Bind.query("wechatId") String wechatId;
   @Bind.query("propertyId") String propertyId;
   @Bind.query("communityId") String communityId;
+  @Bind.query("uri_type") String uriType;
+  @Bind.query("code") String code;
 
   // under /data/
   @Operation.get("which") 
@@ -29,8 +31,24 @@ class DataProvider extends ResourceController {
         final json = _queryWithReq();
         return Response.ok(json)..contentType =ContentType.json;
         break;
+
+      case "uri":
+        
+        break;
+
+      case "get_id":
+        break;
       default:
         return Response.ok("not such method")..contentType =ContentType.text;
+    }
+  }
+
+  String _getPageUri() {
+    switch (uriType) {
+      case "":
+        
+        break;
+      default:
     }
   }
 

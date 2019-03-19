@@ -1,14 +1,13 @@
 import 'dart:io';
+import 'package:aqueduct/aqueduct.dart';
 import 'dart:convert';
 import 'dart:async';
-import 'package:aqueduct/aqueduct.dart';
-
 import 'package:demo_aqueduct/data/definition/owner.dart';
 import 'package:demo_aqueduct/data/global.dart' as globals;
 
-class CommController extends FileController implements Recyclable{
+class OwnerUnbindController extends FileController implements Recyclable{
 
-  CommController(String pathOfDirectoryToServe) : super(pathOfDirectoryToServe);
+  OwnerUnbindController(String pathOfDirectoryToServe) : super(pathOfDirectoryToServe);
 
   @Bind.query("code") String code;
 
@@ -27,7 +26,7 @@ class CommController extends FileController implements Recyclable{
 
     final openid =jsonMap["openid"] as String;
 
-    if (globals.userExist(openid))    
+    if (!globals.userExist(openid))    
       return Response.ok("openid exist");
     else 
       return request;

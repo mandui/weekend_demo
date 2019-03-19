@@ -1,14 +1,14 @@
 import 'dart:io';
-import 'dart:convert';
 import 'dart:async';
+import 'dart:convert';
 import 'package:aqueduct/aqueduct.dart';
 
 import 'package:demo_aqueduct/data/definition/owner.dart';
 import 'package:demo_aqueduct/data/global.dart' as globals;
 
-class CommController extends FileController implements Recyclable{
+class PropertyController extends FileController implements Recyclable{
 
-  CommController(String pathOfDirectoryToServe) : super(pathOfDirectoryToServe);
+  PropertyController(String pathOfDirectoryToServe) : super(pathOfDirectoryToServe);
 
   @Bind.query("code") String code;
 

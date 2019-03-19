@@ -1,20 +1,22 @@
 import 'dart:io';
-import 'dart:convert';
 import 'dart:async';
+import 'dart:convert';
+
 import 'package:aqueduct/aqueduct.dart';
 
 import 'package:demo_aqueduct/data/definition/owner.dart';
 import 'package:demo_aqueduct/data/global.dart' as globals;
 
-class CommController extends FileController implements Recyclable{
+class AddPropertyController extends FileController implements Recyclable{
 
-  CommController(String pathOfDirectoryToServe) : super(pathOfDirectoryToServe);
+  AddPropertyController(String pathOfDirectoryToServe) : super(pathOfDirectoryToServe);
 
   @Bind.query("code") String code;
 
   @override
   Future<RequestOrResponse> handle(Request request) async {
-
+    //https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET
+    //&code=CODE&grant_type=authorization_code
     Uri uri = Uri.https("api.weixin.qq.com", "sns/oauth2/access_token", {
       "appid" :globals.appID, "secret":globals.appSecret,
       "code" :code, "grant_type": "authorization_code"
@@ -28,7 +30,7 @@ class CommController extends FileController implements Recyclable{
     final openid =jsonMap["openid"] as String;
 
     if (globals.userExist(openid))    
-      return Response.ok("openid exist");
+      return Response.ok("community ctrl: exist, and has properties");
     else 
       return request;
   }

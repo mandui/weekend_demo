@@ -11,14 +11,15 @@ class WechatAuthorizer extends ResourceController {
   static const String token = "ExprMandui";
 
   @Operation.get()
-  Future<Response> checkFromWechat (
+  Future<RequestOrResponse> checkFromWechat (
     @Bind.query('signature') String signature,
     @Bind.query('nonce') String nonce,
     @Bind.query('timestamp') String timestamp,
     @Bind.query('echostr') String echostr) async {
 
     if (fromWechat(timestamp, nonce, signature)) {
-      return Response.ok(echostr)..contentType = ContentType.text;
+      return request;
+      //return Response.ok(echostr)..contentType = ContentType.text;
     }
     // I wonder weather is always called
 
@@ -139,8 +140,7 @@ class WechatAuthorizer extends ResourceController {
     print("menu created: ${json.encode(ret)}");
 }
 
-//const String auth = "ec2-3-18-145-128.us-east-2.compute.amazonaws.com";
-final auth = "6ea12bbb.ngrok.io";
+final auth = "www.imandui.com";
 Map<String, dynamic> _getMenu() {
   final commListUri = Uri.https(auth, "/community/list/").toString();
   final bindId = Uri.https(auth, "/owner/to_bind/").toString();

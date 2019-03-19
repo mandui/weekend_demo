@@ -13,12 +13,14 @@ void prepare() {
   Timer.periodic(timeout, (Timer t) => getAccessToken());
 }
 
-
-
+// key:openid value:access_token, last time,
+Map<String, String> tokens = Map();
+Map<String, num> tokenTime = Map();
 
 List<Owner> registedOwners =List();
-const String appSecret = "3268923f3b1d643634b5ba2d5a47c7e3";
-const String appID ="wx95129b9615825957";
+//real one
+const String appSecret = "Be91c1df6197e26f129bcf7608aabdb1";
+const String appID ="wx10823f9799c7f8dc";
 String access_token = "";
 String page_access_token = "";
 num lastTime = 0;

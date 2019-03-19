@@ -60,15 +60,24 @@ class DemoAqueductChannel extends ApplicationChannel {
       // openid不存在，提示绑定
       .link(() => FileController("lib/pages/bind_id/"));
 
-    // 3.维修资金查询
     router.route("/property/list/*")
+      .link(() => FileController("lib/pages/m19_choose_method/"));
+
+    router.route("/property/id/*")
+      .link(() => FileController("lib/pages/temp/id_input/"));
+
+    router.route("/property/account/*")
+      .link(() => FileController("lib/pages/temp/account_input/"));
+
+    // 3.维修资金查询
+    /*router.route("/property/list/*")
     .link(() => FileController("lib/pages/property_list/"))
       // 有openid, 有房产
       .link(() => PropertyController("lib/pages/property_list/"))
       // 有openid, 无房产
       .link(() => NoPropertyController("lib/pages/to_bind_properties/"))
       // 无openid
-      .link(() => FileController("lib/pages/to_bind/"));
+      .link(() => FileController("lib/pages/to_bind/"));*/
 
     // 4.管理我的房产
     router.route("/property/add/*")

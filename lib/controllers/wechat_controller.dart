@@ -28,6 +28,10 @@ class WechatAuthorizer extends ResourceController {
   }
 
   // todo add refresh every 90 min
+  @Operation.post() 
+  Future<Response> replyMessages() async {
+    return Response.ok("body");
+  }
 
   // FOR TEST PART ------------------------------------------------
   @Operation.get("api")

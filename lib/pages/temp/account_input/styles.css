@@ -1,0 +1,36 @@
+.comm-item {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+    margin-left: 3vw;
+    margin-right: 3vw;
+    margin-top: 5vw;
+    border-radius: 1vw;
+    display: flex;
+}
+
+.left-line {
+    display: inline-block;
+    border-radius: 1vw 0 0 1vw;
+    width: 3vw;
+    background-color: #03A9F4;
+}
+
+.description {
+    width: 100%;
+    display: block;
+    color: #1E88E5;
+    padding-left: 5vw;
+    padding-top: 5vw;
+    padding-bottom: 5vw;
+    font-size: 8vw;
+}
+
+.contents{
+    display: inline-block;
+    width: 100%;
+}
+
+.title {
+    font-size: 6vw;
+    margin: 5vw;
+    color: #1E88E5;
+}

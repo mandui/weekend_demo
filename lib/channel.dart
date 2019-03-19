@@ -70,14 +70,14 @@ class DemoAqueductChannel extends ApplicationChannel {
       .link(() => FileController("lib/pages/temp/account_input/"));
 
     // 3.维修资金查询
-    /*router.route("/property/list/*")
-    .link(() => FileController("lib/pages/property_list/"))
+    //router.route("/property/list/*")
+    //.link(() => FileController("lib/pages/property_list/"))
       // 有openid, 有房产
-      .link(() => PropertyController("lib/pages/property_list/"))
+      //.link(() => PropertyController("lib/pages/property_list/"))
       // 有openid, 无房产
-      .link(() => NoPropertyController("lib/pages/to_bind_properties/"))
+      //.link(() => NoPropertyController("lib/pages/to_bind_properties/"))
       // 无openid
-      .link(() => FileController("lib/pages/to_bind/"));*/
+      //.link(() => FileController("lib/pages/to_bind/"));
 
     // 4.管理我的房产
     router.route("/property/add/*")

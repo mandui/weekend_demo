@@ -46,7 +46,8 @@ class DemoAqueductChannel extends ApplicationChannel {
     // 1. 我的小区
     router.route("/community/list/*")
       // openid存在，有小区信息，现实
-      .link(() => CommController("lib/pages/comm_list/"))
+      //.link(() => CommController("lib/pages/comm_list/"))
+      .link(() => FileController("lib/pages/comm_list/"))
       // opid存在，无房产信息，
       .link(() => NoPropertyController("lib/pages/to_bind_properties/"))
       // openid不存在 -> 绑定信息
@@ -55,7 +56,7 @@ class DemoAqueductChannel extends ApplicationChannel {
     // 2. 身份信息
     router.route("/owner/bind/*")
       // openid存在，提示解绑
-      .link(() => OwnerUnbindController("lib/pages/owner_unbind/"))
+      //.link(() => OwnerUnbindController("lib/pages/owner_unbind/"))
       // openid不存在，提示绑定
       .link(() => FileController("lib/pages/bind_id/"));
 
@@ -72,7 +73,8 @@ class DemoAqueductChannel extends ApplicationChannel {
     // 4.管理我的房产
     router.route("/property/add/*")
       // 有openid，search页面，选择特定房产之后提示关联
-      .link(() => AddPropertyController("lib/pages/add_property/"))
+      .link(() => FileController("lib/pages/add_property/"))
+      //.link(() => AddPropertyController("lib/pages/add_property/"))
       // 无openid
       .link(() => FileController("lib/pages/to_bind/"));
 

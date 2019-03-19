@@ -69,6 +69,9 @@ class DemoAqueductChannel extends ApplicationChannel {
     router.route("/property/account/*")
       .link(() => FileController("lib/pages/temp/account_input/"));
 
+    router.route("/property/into_account/*")
+      .link(() => FileController("lib/pages/temp/into_account/"));
+
     // 3.维修资金查询
     //router.route("/property/list/*")
     //.link(() => FileController("lib/pages/property_list/"))

@@ -95,6 +95,8 @@ class DemoAqueductChannel extends ApplicationChannel {
     router.route("/temp/comm_info/*").link(() => FileController("lib/pages/temp/comm_info/"));
     // temp temp/comm_vote/
     router.route("/temp/comm_vote/*").link(() => FileController("lib/pages/temp/comm_vote/"));
+    // temp temp/property_details/ 实际是小区菜单
+    router.route("/temp/property_details/*").link(() => FileController("lib/pages/temp/comm_entry/"));
 
 
     router.route("/get_menu")

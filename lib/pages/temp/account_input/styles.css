@@ -1,5 +1,7 @@
 button {
     color: #444444;
+    font-size: 5vx;
+    margin: 10vw;
     background: #F3F3F3;
     border: 1px #DADADA solid;
     padding: 5px 10px;
@@ -88,9 +90,12 @@ button.red:active {
 /*=======================================*/
 
 .inp {
+    font-size: 8vw;
+    margin-left: 5vw;
+    margin-top: 5vw;
     position: relative;
     margin: auto;
-    width: 100%;
+    width: 50vw;
     max-width: 280px;
   }
   .inp .label {

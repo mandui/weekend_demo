@@ -18,6 +18,7 @@ body {
   font-size: 5vw;
   line-height: 10vh;
   color: #777;
+  background: #FFF;
 }
 
 .container {
@@ -121,3 +122,4 @@ fieldset {
  width:100%;
 background-image: linear-gradient(to top, rgba(255,255,255,0), rgba(255, 255, 255,1));
 }
+

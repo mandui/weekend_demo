@@ -33,7 +33,7 @@
   #contact input[type="url"],
   #contact textarea,
   #contact button[type="submit"] {
-      font-size: 5vw;
+      font-size: 4vw;
       padding: 2vw;
   }
   
@@ -57,10 +57,10 @@
   #contact input[type="url"],
   #contact textarea {
     width: 100%;
-    border: 1px solid #2196f3;
+    border: 2px solid #2196f3;
     background: #FFF;
     margin: 0 0 2vw;
-    padding: 10px;
+    padding: 2vw;
   }
   
   #contact input[type="text"]:hover,

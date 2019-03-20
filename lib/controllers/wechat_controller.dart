@@ -12,15 +12,15 @@ class WechatAuthorizer extends ResourceController {
   @Bind.query('id_type') String idType;
 
   @Operation.get()
-  Future<RequestOrResponse> checkFromWechat (
+  Future<Response> checkFromWechat (
     @Bind.query('signature') String signature,
     @Bind.query('nonce') String nonce,
     @Bind.query('timestamp') String timestamp,
     @Bind.query('echostr') String echostr) async {
 
     if (fromWechat(timestamp, nonce, signature)) {
-      return request;
-      //return Response.ok(echostr)..contentType = ContentType.text;
+      //return request;
+      return Response.ok(echostr)..contentType = ContentType.text;
     }
     // I wonder weather is always called
 

@@ -88,13 +88,8 @@
     color: #FFF;
     margin: 0 0 0vw;
     padding: 2vw;
-    font-size: 5vw;
+    font-size: 4vw;
     font-weight: bold;
-  }
-  
-  #contact button[type="submit"]:hover {
-    background: #43A047;
-    transition: background-color 0.3s ease-in-out;
   }
   
   #contact button[type="submit"]:active {

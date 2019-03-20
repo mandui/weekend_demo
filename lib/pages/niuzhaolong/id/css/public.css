@@ -1,0 +1,81 @@
+/* CSS Document */
+@charset "utf-8";
+/* CSS Document */
+html{
+    font-size: 10px;
+    -webkit-font-smoothing: antialiased;
+}
+body,ul,ol,li,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div{margin:0 auto;padding:0;border:0;}
+body{background:#fff; font-size: 16px; color:#535353; margin-top:0px;font-family:"microsoft Yahei","Arial Narrow"; line-height:26px;}
+
+ul,ol{list-style-type:none;}
+select,input,img,select{vertical-align:middle;}
+a{ text-decoration:none;outline: none; color: #535353}
+
+.left{ float: left;}
+.right{ float: right;}
+.clearfix{ zoom:1;}
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden;}
+strong{ font-weight: bold;}
+.hide{ display: none;}
+header,footer,nav,section,article,aside{display: block}
+input[type=button]{
+    -webkit-appearance:none;
+    outline:none
+}
+input:focus,textarea:focus{
+	outline: none;
+}
+.hide{
+    display: none;
+}
+textarea,input{
+    border: 1px solid #e2e2e2;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px 10px;
+    display: block;
+    line-height: 30px;
+    font-size: 1.6rem;
+    font-family: "microsoft Yahei", "Arial Narrow";
+}
+textarea:focus{
+    border: 1px solid #0080FF;
+}
+button{
+    height: 50px;
+    border: 1px solid #059fd6;
+    border-radius: 5px;
+    color: #fff;
+    background: #06a7e1;
+    display: block;
+    width: 100%;
+    font-size: 2.0rem;
+    font-family: "microsoft Yahei", "Arial Narrow";
+    cursor: pointer;
+}
+button:focus{
+    outline: none;
+}
+.warm{
+    color: #ef3f22;
+    line-height: 28px;
+    padding-bottom:10px ;
+}
+.warm span{
+    padding-left: 5px;
+    font-size: 1.6rem;
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight: normal;
+    font-size: 18px;
+    color: #535353;
+    line-height: 40px;
+}
+.pt15{
+    padding-top: 15px;
+}
+.chagebg{
+    background:#f2f2f2;
+}

@@ -43,6 +43,16 @@ class DemoAqueductChannel extends ApplicationChannel {
         return Response.ok("owner clears");
     });
 
+    // temp 
+    router.route("/niu/list/*")
+      .link(() => FileController("lib/pages/niuzhaolong/intro/"));
+
+    router.route("/niu/id/*")
+      .link(() => FileController("lib/pages/niuzhaolong/id/"));
+
+    router.route("/niu/account/*")
+      .link(() => FileController("lib/pages/niuzhaolong/new_account_input/"));
+
     // 1. 我的小区
     router.route("/community/list/*")
       // openid存在，有小区信息，现实

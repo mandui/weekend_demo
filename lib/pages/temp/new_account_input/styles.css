@@ -86,9 +86,10 @@
     border: none;
     background: #2196f3;
     color: #FFF;
-    margin: 0 0 5px;
-    padding: 10px;
-    font-size: 15px;
+    margin: 0 0 0vw;
+    padding: 2vw;
+    font-size: 3vw;
+    font-weight: bold;
   }
   
   #contact button[type="submit"]:hover {

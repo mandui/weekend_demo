@@ -51,7 +51,7 @@ class DemoAqueductChannel extends ApplicationChannel {
       .link(() => FileController("lib/pages/niuzhaolong/id/"));
 
     router.route("/niu/account/*")
-      .link(() => FileController("lib/pages/niuzhaolong/new_account_input/"));
+      .link(() => FileController("lib/pages/niuzhaolong/account/"));
 
     // 1. 我的小区
     router.route("/community/list/*")

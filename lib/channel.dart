@@ -64,7 +64,7 @@ class DemoAqueductChannel extends ApplicationChannel {
       .link(() => FileController("lib/pages/m19_choose_method/"));
 
     router.route("/property/id/*")
-      .link(() => FileController("lib/pages/temp/id_input/"));
+      .link(() => FileController("lib/pages/temp/new_id_input/"));
 
     router.route("/property/account/*")
       .link(() => FileController("lib/pages/temp/new_account_input/"));

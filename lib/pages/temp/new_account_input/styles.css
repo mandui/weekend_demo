@@ -33,7 +33,7 @@
   #contact input[type="url"],
   #contact textarea,
   #contact button[type="submit"] {
-      font-size: 4vw;
+      font-size: 5vw;
       padding: 1vw;
   }
   
@@ -47,7 +47,7 @@
   fieldset {
     border: medium none !important;
     min-width: 100%;
-    padding: 1vw;
+    padding: 2vw;
     width: 100%;
   }
   
@@ -59,7 +59,7 @@
     width: 100%;
     border: 1px solid #2196f3;
     background: #FFF;
-    margin: 0 0 5px;
+    margin: 0 0 2vw;
     padding: 10px;
   }
   
@@ -88,7 +88,7 @@
     color: #FFF;
     margin: 0 0 0vw;
     padding: 2vw;
-    font-size: 3vw;
+    font-size: 4vw;
     font-weight: bold;
   }
   

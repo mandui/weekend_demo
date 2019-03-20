@@ -105,3 +105,19 @@ fieldset {
   outline: 0;
   border: 1px solid #ff0000;
 }
+
+.footer {
+  position:absolute;
+ bottom:0;
+ width:100%;
+ /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+63,ffffff+100 */
+
+}
+
+.mask {
+  position:absolute;
+ bottom:0;
+ height: 40%;
+ width:100%;
+background-image: linear-gradient(to top, rgba(255,255,255,0), rgba(255, 255, 255,1));
+}

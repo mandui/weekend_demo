@@ -34,7 +34,7 @@
   #contact textarea,
   #contact button[type="submit"] {
       font-size: 5vw;
-      padding: 1vw;
+      padding: 2vw;
   }
   
   #contact {
@@ -88,7 +88,7 @@
     color: #FFF;
     margin: 0 0 0vw;
     padding: 2vw;
-    font-size: 4vw;
+    font-size: 5vw;
     font-weight: bold;
   }
   

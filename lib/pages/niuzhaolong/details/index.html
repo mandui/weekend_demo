@@ -1,18 +1,147 @@
-<!DOCTYPE html>
+﻿<!doctype html>
 <html>
-  <head>
-    <title>client_community</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <script defer src="main.dart.js"></script>
-  </head>
-  <body>
-    <my-app>Loading...</my-app>
-  </body>
-  <script>
-  //点击服务流程，蓝色滑块向左移动，切换到服务流程页
+<head>
+<script src="js/jquery.js"></script>
+
+<link href="css/css.css" rel="stylesheet" type="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="format-detection" content="telephone=no" />
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body style="background-color: #f9f9f9;">
+<!--header顶部标题-->
+<div class="header">账户详情
+	<div class="header_left" onclick="window.history.go(-1)"><img src="images/return.png"></div>
+</div>
+
+
+<!--服务流程or订单详情-->
+<div style="position:relative; height:42px;">
+    <div class="information" >基本信息</div>
+    <div class="evaluate">账单详情</div>
+    <div class="blue_block"></div>
+    <div class="border_bottom"></div>
+</div>
+<!--服务流程-->
+<div class="move_box">
+<div class="move">
+<div class="order_box ">
+    <!--订单信息-->
+    <div class="order_title">账户信息</div>
+    <div class="order_msg">
+        <div class="border_top"></div>
+        <div class="msg_line">
+            <h1>账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号</h1>
+            <p>16010600001</p>
+            <div class="clearfix"></div>
+        </div>
+        <div class="msg_line">
+            <h1>银&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行</h1>
+            <p>中国交通银行</p>
+            <div class="clearfix"></div>
+        </div>
+        <div class="msg_line">
+            <h1>首次缴存日期</h1>
+            <p>2015年1月</p>
+            <div class="clearfix"></div>
+        </div>
+        <div class="msg_line">
+            <h1>维修资金本金</h1>
+            <p>12635元</p>
+            <div class="clearfix"></div>
+        </div>
+        <div class="msg_line">
+            <h1>维修资金利息</h1>
+            <p>300元</p>
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="clearfix"></div>
+        <div class="border_bottom"></div>
+    </div>
+    
+     <div class="order_title">房屋信息</div>
+    <div class="order_msg">
+        <div class="border_top"></div>
+        <div class="msg_line">
+            <h1>购&nbsp;&nbsp;房&nbsp;&nbsp;时&nbsp;&nbsp;间</h1>
+            <p>16010600001</p>
+            <div class="clearfix"></div>
+        </div>
+        <div class="msg_line">
+            <h1>建&nbsp;&nbsp;筑&nbsp;&nbsp;面&nbsp;&nbsp;积</h1>
+            <p>中国交通银行</p>
+            <div class="clearfix"></div>
+        </div>
+        <div class="msg_line">
+            <h1>房&nbsp;&nbsp;屋&nbsp;&nbsp;售&nbsp;&nbsp;价</h1>
+            <p>2015年1月</p>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="border_bottom"></div>
+    </div>
+    
+  <div class="order_title">业主信息</div>
+    <div class="order_msg">
+        <div class="border_top"></div>
+        <div class="msg_line">
+            <h1>业&nbsp;&nbsp;主&nbsp;&nbsp;姓&nbsp;&nbsp;名</h1>
+            <p>16010600001</p>
+            <div class="clearfix"></div>
+        </div>
+        <div class="msg_line">
+            <h1>建&nbsp;&nbsp;筑&nbsp;&nbsp;面&nbsp;&nbsp;积</h1>
+            <p>中国交通银行</p>
+            <div class="clearfix"></div>
+        </div>
+        <div class="msg_line">
+            <h1>身&nbsp;&nbsp;份&nbsp;&nbsp;证&nbsp;&nbsp;号</h1>
+            <p>2015年1月</p>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="border_bottom"></div>
+    </div>  
+</div>
+
+
+<div class="service_box">
+     <table>
+        <thead>
+            <tr>
+                <th>
+                    时间
+                </th>
+                <th>用途</th>
+                <th>金额</th>
+            </tr>
+        </thead>
+        <tbody id="j_tb">
+            <tr>
+                <td>
+                   2013年3月
+                </td>
+                <td>首次交存</td>
+                <td>11362.00</td>
+            </tr>
+            <tr>
+                <td>
+                    2013年3月
+                </td>
+                <td>结息</td>
+                <td>3000.00</td>
+     
+        </tbody>
+    </table>
+
+</div>
+</div>
+
+<script>
+//点击服务流程，蓝色滑块向左移动，切换到服务流程页
 $(".information").click(
 	function(){
 		$(".blue_block").animate({left:'0%'});
@@ -45,13 +174,7 @@ $(".close_share").click(
 )
 //隐藏取消规则
 $(".cancel_box").hide();
-
-document.body.addEventListener('touchstart', function(){ });
-      $('a').on('click touchend', function(e) {
-          var el = $(this);
-          var link = el.attr('href');
-          window.location = link;
-       });
-
 </script>
+</body>
 </html>
+

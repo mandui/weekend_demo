@@ -1,49 +1,252 @@
-<!DOCTYPE html>
+﻿<!doctype html>
 <html>
-  <head>
-    <title>账户详情</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <script defer src="main.dart.js"></script>
-  </head>
-  <body>
-    <my-app>Loading...</my-app>
-  </body>
-  <script>
-    //点击服务流程，蓝色滑块向左移动，切换到服务流程页
-    $(".information").click(
-        function(){
-            $(".blue_block").animate({left:'0%'});
-            $(".move").animate({left:'0%'});
-            }
-    )
-    //点击订单详情，蓝色滑块向右移动，切换到订单详情页
-    $(".evaluate").click(
-        function(){
-            $(".blue_block").animate({left:'50%'});
-            $(".move").animate({left:'-100%'});
-            }
-    )
-    //隐藏黑色半透明背景和分享页
-    $(".black").hide();
-    $(".share_box").hide();
-    //点击分享按钮，弹出分享页
-    $(".share_btn").click(
-        function(){
-            $(".black").show();
-            $(".share_box").show();
-            }
-    )
-    //点击分享页左上角的关闭按钮
-    $(".close_share").click(
-        function(){
-            $(".black").hide();
-            $(".share_box").hide();
-            }
-    )
-    //隐藏取消规则
-    $(".cancel_box").hide();
-    </script>
+<head>
+<script src="js/jquery.js"></script>
+
+<link href="css.css" rel="stylesheet" type="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="format-detection" content="telephone=no" />
+<meta charset="utf-8">
+<title>账户详情</title>
+<style>
+.move_box{ width:100%; clear:both; position:relative; left:0; overflow:hidden}
+.move{ width:200%; clear:both; position:relative; left:0; }
+/*服务流程or订单详情*/
+.information,.evaluate{ height:41px; width:50%; line-height:41px; color:#65646b; text-align:center; float:left; font-size:14px;}
+.blue_block{ width:50%; height:2px; background-color:#008377; position:absolute; left:0; bottom:0;}
+/*服务流程*/
+.service_box{  background-color:#fff; position:relative; width:50%; float:left}
+.blue{ width:14px; height:14px; position:absolute; z-index:2; left:4%; top:20px; background-color:#a5dcfa; border-radius:50%; padding-top:2px; padding-left:2px; box-sizing:border-box}
+.blue div{ height:10px; width:10px; background-color:#01aff0; border-radius:50%;}
+.gray{ width:14px; height:14px; position:absolute; z-index:0; left:4%; top:20px; padding-top:1px; padding-left:1px; box-sizing:border-box}
+.gray div{ height:12px; width:12px; background-color:#ccc; border-radius:50%;}
+.gray p{ position:absolute; width:2px; height:59px; background-color:#ccc; left:50%; margin-left:-1px; top:-50px;}
+.service{ height:60px; padding-top:11px; box-sizing:border-box; position:relative; box-sizing:border-box; background:#fff;}
+.service h1{ line-height:18px; color:#191919; font-size:14px; margin-left:11%;}
+.service h2{ line-height:16px; color:#65646b; font-size:12px; margin-left:11%}
+.service > p{ line-height:42px; color:#65646b; font-size:12px; position:absolute; top:0; right:4%;}
+/*账户详情*/
+.order_box{ width:50%; float:left}
+.order_title{ height:39px; line-height:39px; font-size:14px; font-weight:bold;color:#65646b; padding-left:4%; box-sizing:border-box}
+.order{ height:42px; background-color:#fff; position:relative; padding-left:4%; padding-right:4%; padding-top:9px; box-sizing:border-box}
+.order_line{ height:26px;}
+.order_line h1{ line-height:26px; font-size:14px; color:#191919; float:left}
+.order_line p{ line-height:26px; font-size:14px; color:#EA5858; float:right}
+/*账户信息*/
+.order_msg{ background-color:#fff; position:relative; padding-left:4%; padding-right:4%; padding-top:9px; box-sizing:border-box;}
+.msg_line{ border-bottom:1px solid #e6e6e6;}
+.msg_line h1{ line-height:40px; font-size:15px;color:#303030; float:left; width:38%;}
+.msg_line p{ line-height:40px; font-size:14px; color:#717171; float:left; width:60%;}
+
+
+
+table {
+	margin-top:15px;
+	border-collapse:collapse;
+	border-spacing:0;
+	
+	width:100%;
+}
+th,td { border-bottom:1px solid #eae8e8;
+	color:#404060;
+	padding:10px;
+}
+th { text-align:left;
+	background-color:#efefef;
+	font:bold 14px "微软雅黑";
+	color:#888888;
+}
+td {
+	font:14px "微软雅黑"; color:#888888;
+}
+
+tbody tr {
+	background-color:#fff;
+}
+tbody tr:hover {
+	cursor:pointer;
+	background-color:#fafafa;
+}
+</style>
+</head>
+
+<body style="background-color: #f9f9f9;">
+<!--header顶部标题-->
+
+<!--服务流程or订单详情-->
+<div style="position:relative; height:42px;">
+    <div class="information" >基本信息</div>
+    <div class="evaluate">账单详情</div>
+    <div class="blue_block"></div>
+    <div class="border_bottom"></div>
+</div>
+<!--服务流程-->
+<div class="move_box">
+<div class="move">
+<div class="order_box ">
+    <!--订单信息-->
+    <div class="order_title">账户信息</div>
+    <div class="order_msg">
+        <div class="border_top"></div>
+        <div class="msg_line">
+            <h1>账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号</h1>
+            <p>16010600001</p>
+            <div class="clearfix"></div>
+        </div>
+        <div class="msg_line">
+            <h1>银&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行</h1>
+            <p>中国交通银行</p>
+            <div class="clearfix"></div>
+        </div>
+        <div class="msg_line">
+            <h1>首次缴存日期</h1>
+            <p>2015年1月</p>
+            <div class="clearfix"></div>
+        </div>
+        <div class="msg_line">
+            <h1>维修资金本金</h1>
+            <p>12635元</p>
+            <div class="clearfix"></div>
+        </div>
+        <div class="msg_line">
+            <h1>维修资金利息</h1>
+            <p>300元</p>
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="clearfix"></div>
+        <div class="border_bottom"></div>
+    </div>
+    
+    
+    
+     <div class="order_title">房屋信息</div>
+    <div class="order_msg">
+        <div class="border_top"></div>
+        <div class="msg_line">
+            <h1>购&nbsp;&nbsp;房&nbsp;&nbsp;时&nbsp;&nbsp;间</h1>
+            <p>16010600001</p>
+            <div class="clearfix"></div>
+        </div>
+        <div class="msg_line">
+            <h1>建&nbsp;&nbsp;筑&nbsp;&nbsp;面&nbsp;&nbsp;积</h1>
+            <p>中国交通银行</p>
+            <div class="clearfix"></div>
+        </div>
+        <div class="msg_line">
+            <h1>房&nbsp;&nbsp;屋&nbsp;&nbsp;售&nbsp;&nbsp;价</h1>
+            <p>2015年1月</p>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="border_bottom"></div>
+    </div>
+    
+    
+    
+  <div class="order_title">业主信息</div>
+    <div class="order_msg">
+        <div class="border_top"></div>
+        <div class="msg_line">
+            <h1>业&nbsp;&nbsp;主&nbsp;&nbsp;姓&nbsp;&nbsp;名</h1>
+            <p>16010600001</p>
+            <div class="clearfix"></div>
+        </div>
+        <div class="msg_line">
+            <h1>建&nbsp;&nbsp;筑&nbsp;&nbsp;面&nbsp;&nbsp;积</h1>
+            <p>中国交通银行</p>
+            <div class="clearfix"></div>
+        </div>
+        <div class="msg_line">
+            <h1>身&nbsp;&nbsp;份&nbsp;&nbsp;证&nbsp;&nbsp;号</h1>
+            <p>2015年1月</p>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="border_bottom"></div>
+    </div>  
+    
+    
+    
+    
+    
+    
+    
+    
+        
+</div>
+
+
+<div class="service_box">
+     <table>
+        <thead>
+            <tr>
+                <th>
+                    时间
+                </th>
+                <th>用途</th>
+                <th>金额</th>
+            </tr>
+        </thead>
+        <tbody id="j_tb">
+            <tr>
+                <td>
+                   2013年3月
+                </td>
+                <td>首次交存</td>
+                <td>11362.00</td>
+            </tr>
+            <tr>
+                <td>
+                    2013年3月
+                </td>
+                <td>结息</td>
+                <td>3000.00</td>
+     
+        </tbody>
+    </table>
+
+</div>
+</div>
+
+
+
+
+<script>
+//点击服务流程，蓝色滑块向左移动，切换到服务流程页
+$(".information").click(
+	function(){
+		$(".blue_block").animate({left:'0%'});
+		$(".move").animate({left:'0%'});
+		}
+)
+//点击订单详情，蓝色滑块向右移动，切换到订单详情页
+$(".evaluate").click(
+	function(){
+		$(".blue_block").animate({left:'50%'});
+		$(".move").animate({left:'-100%'});
+		}
+)
+//隐藏黑色半透明背景和分享页
+$(".black").hide();
+$(".share_box").hide();
+//点击分享按钮，弹出分享页
+$(".share_btn").click(
+	function(){
+		$(".black").show();
+		$(".share_box").show();
+		}
+)
+//点击分享页左上角的关闭按钮
+$(".close_share").click(
+	function(){
+		$(".black").hide();
+		$(".share_box").hide();
+		}
+)
+//隐藏取消规则
+$(".cancel_box").hide();
+</script>
+</body>
 </html>
+

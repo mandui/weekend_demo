@@ -53,6 +53,9 @@ class DemoAqueductChannel extends ApplicationChannel {
     router.route("/niu/account/*")
       .link(() => FileController("lib/pages/niuzhaolong/account/"));
 
+    router.route("/niu/details/*")
+      .link(() => FileController("lib/pages/niuzhaolong/details/"));
+
     // 1. 我的小区
     router.route("/community/list/*")
       // openid存在，有小区信息，现实

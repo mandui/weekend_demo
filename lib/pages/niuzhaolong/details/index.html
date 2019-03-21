@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>client_community</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script defer src="main.dart.js"></script>
+  </head>
+  <body>
+    <my-app>Loading...</my-app>
+  </body>
+  <script>
+  //点击服务流程，蓝色滑块向左移动，切换到服务流程页
+$(".information").click(
+	function(){
+		$(".blue_block").animate({left:'0%'});
+		$(".move").animate({left:'0%'});
+		}
+)
+//点击订单详情，蓝色滑块向右移动，切换到订单详情页
+$(".evaluate").click(
+	function(){
+		$(".blue_block").animate({left:'50%'});
+		$(".move").animate({left:'-100%'});
+		}
+)
+//隐藏黑色半透明背景和分享页
+$(".black").hide();
+$(".share_box").hide();
+//点击分享按钮，弹出分享页
+$(".share_btn").click(
+	function(){
+		$(".black").show();
+		$(".share_box").show();
+		}
+)
+//点击分享页左上角的关闭按钮
+$(".close_share").click(
+	function(){
+		$(".black").hide();
+		$(".share_box").hide();
+		}
+)
+//隐藏取消规则
+$(".cancel_box").hide();
+
+document.body.addEventListener('touchstart', function(){ });
+      $('a').on('click touchend', function(e) {
+          var el = $(this);
+          var link = el.attr('href');
+          window.location = link;
+       });
+
+</script>
+</html>
